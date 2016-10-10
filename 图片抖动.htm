@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>第七课作业-图片上下滚动</title>
+<style type="text/css">
+*{padding:0;margin:0;}
+ul,li{list-style:none;}
+a{text-decoration:none;}
+.gamediv{width:950px;height:200px;overflow;position:relative;margin:0 auto;}
+.gamediv img{position:absolute;top:30px;}
+.img1{left:40px;}
+.img2{left:330px;}
+.img3{left:620px;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var aimg=document.getElementById("outdiv").getElementsByTagName("img");
+	var arrl=[];
+	for(var i=0;i<aimg.length;i++){		
+		arrl.push(parseInt(getstyle(aimg[i],"left")));
+		aimg[i].index=i;
+		aimg[i].onmouseover=function(){
+			shake(this,'left',arrl[this.index]);
+		}
+	}
+	
+	function shake(obj,atr,pos){
+		var alang=[];
+		var num=0;
+		//var	pos=parseInt(getstyle(obj,atr));
+		clearInterval(obj.timer);
+		for(var i=20;i>0;i-=2){
+			alang.push(i,-i);
+		}
+		alang.push(0);
+		obj.timer=setInterval(function(){
+			obj.style[atr]=pos+alang[num]+"px";
+			num++;
+			if(num==alang.length){
+				clearInterval(obj.timer);
+			}
+		},30)
+	}
+	function getstyle(objj,attr){
+		return objj.currentStyle?objj.currentStyle[attr]:getComputedStyle(objj)[attr];
+
+	}
+}
+</script>
+</head>
+
+<body>
+<div class="gamediv" id="outdiv">
+	<img style="left: 40px;" src="1.jpg" alt="" class="img1" height="140" width="250">
+	<img style="left: 330px;" src="2.jpg" alt="" class="img2" height="140" width="250">
+	<img style="left: 620px;" src="3.jpg" alt="" class="img3" height="140" width="250">
+</div>
+
+
+</body></html>
