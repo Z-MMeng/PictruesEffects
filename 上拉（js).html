@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上拉显示信息</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img {
+			border: 0px;
+		}
+		.piclist{
+			width: 100%;
+			margin-left: 60px;
+			float: left;
+		}
+		.piclist .col{
+			float: left;
+			width: 300px;
+			height: 300px;
+			position: relative;
+			overflow: hidden;
+			margin: 3px;
+		}
+		.piclist .col img, .col a {
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		.piclist .col img {
+			width: 100%;
+		}
+		.piclist .col a{
+			text-decoration: none;
+			display: block;
+			width: 280px;
+			height: 280px;
+			padding: 10px;
+			top: 260px;
+			line-height: 25px;
+			background-color: #000;
+			opacity: 0.8;
+			color: #fff;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="piclist" class="piclist">
+		<div class="col" id="pic1">
+			<img src="img/001.png" style="width: 300px;height: 300px; ">
+			<a href="#">fbsjkdfbjksb<br/><br/>
+			fdsjfvjsvfhbdsmbfmdf,<br/>msdma,<br/>nsdkjfalwhedwbdjwundjsadj,<br/>sndksafksnf
+			</a>
+		</div>
+		<div class="col" id="pic2">
+			<img src="img/002.jpg" style="width: 300px;height: 300px; ">
+			<a href="#">fbsjkdfbjksb<br/><br/>
+			fdsjfvjsvfhbdsmbfmdf,<br/>msdma,<br/>nsdkjfalwhedwbdjwundjsadj,<br/>sndksafksnf
+			</a>
+		</div>
+		<div class="col" id="pic3" >
+			<img src="img/003.jpg" style="width: 300px;height: 300px; ">
+			<a href="#">fbsjkdfbjksb<br/><br/>
+			fdsjfvjsvfhbdsmbfmdf,<br/>msdma,<br/><nsdkjfalwhedwbdjwundjsadj,<br/>sndksafksnf
+			</a>
+		</div>
+		<div class="col" id="pic4" >
+			<img src="img/004.jpg" style="width: 300px;height: 300px; ">
+			<a href="#">fbsjkdfbjksb<br/><br/>
+			fdsjfvjsvfhbdsmbfmdf,<br/>msdma,<br/>nsdkjfalwhedwbdjwundjsadj,<br/>sndksafksnf
+			</a>
+		</div>
+	</div>
+	<script>
+		/*
+		var Div1 = document.getElementById('pic1');
+		Div1.onmouseover = function(){
+			Div1.getElementsByTagName('a')[0].style.top = 0;
+		}
+		Div1.onmouseout = function(){
+			Div1.getElementsByTagName('a')[0].style.top = 260 +"px";
+		}
+
+		var Div2 = document.getElementById('pic2');
+		Div2.onmouseover = function(){
+			Div2.getElementsByTagName('a')[0].style.top = 0;
+		}
+		Div2.onmouseout = function(){
+			Div2.getElementsByTagName('a')[0].style.top = 260 +"px";
+		}
+
+		var Div3 = document.getElementById('pic3');
+		Div3.onmouseover = function(){
+			Div3.getElementsByTagName('a')[0].style.top = 0;
+		}
+		Div3.onmouseout = function(){
+			Div3.getElementsByTagName('a')[0].style.top = 260 +"px";
+		}
+
+		var Div4 = document.getElementById('pic4');
+		Div4.onmouseover = function(){
+			Div4.getElementsByTagName('a')[0].style.top = 0;
+		}
+		Div4.onmouseout = function(){
+			Div4.getElementsByTagName('a')[0].style.top = 260 +"px";
+		}
+		*/
+
+		//传参法优化代码
+		function showMeg(index){
+			var Div = document.getElementById('pic' + index);
+			Div.onmouseover = showAtop;
+			function showAtop(){
+				Div.getElementsByTagName('a')[0].style.top = 0;
+			}
+			Div.onmouseout = showAtop2;
+			function showAtop2(){
+				Div.getElementsByTagName('a')[0].style.top = 260 +"px";
+			}
+	 	}
+	 	showMeg(1);
+	 	showMeg(2);	 
+	 	showMeg(3);
+	 	showMeg(4);	
+	 	 
+
+	 	/*//循坏法优化代码
+	 	这段代码有问题，效果出不来
+		function imgDisplay(){
+		    var Div = document.getElementById('piclist').getElementsByTagName('div');
+			var divHeight = 260;
+			for(var i = 0 ;i < Div.length; i++){
+				Div[i].onmouseover = showMeg();
+				Div[i].onmouseout = hideMeg();
+			}
+			function showMeg(){
+				this.document.getElementsByTagName('a')[0].style.top = 0;
+			}
+			function hideMeg(){
+				this.document.getElementsByTagName('a')[0].style.top = divHeight+'px';
+			}
+ 		}
+		imgDisplay();
+		*/
+	</script>
+</body>
+
+</html>
